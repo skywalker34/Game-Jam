@@ -16,6 +16,9 @@ public class PlayerControl : MonoBehaviour
     bool isRoof;
     bool isForwardDirection;
 
+    [Header("Sounds")]
+    public AudioSource jump, dash;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +69,7 @@ public class PlayerControl : MonoBehaviour
                     gravityScale = isGrounded ? 1 : -1;
                     playerRigidbody.gravityScale = gravityScale;
                     playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, Constants.verticalSpeed);
+                    jump.Play();
                     break;
                 }
             case Movement.down:
@@ -79,6 +83,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     playerRigidbody.gravityScale = isGrounded ? playerRigidbody.gravityScale : 0;
                     playerRigidbody.velocity = new Vector2(isForwardDirection ? Constants.dashingSpeed : -Constants.dashingSpeed, 0);
+                    dash.Play();
                     break;
                 }
         }
