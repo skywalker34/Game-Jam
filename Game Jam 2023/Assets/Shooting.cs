@@ -8,6 +8,9 @@ public class Shooting : MonoBehaviour
 
     private float lastShootTime;
 
+    [Header("Sounds")]
+    public AudioSource shoot;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -23,5 +26,8 @@ public class Shooting : MonoBehaviour
 
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
         rigidbody.velocity = new Vector2(10,0);
+
+        shoot.Play();
+
     }
 }
