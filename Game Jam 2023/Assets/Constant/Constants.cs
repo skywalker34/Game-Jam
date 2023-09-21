@@ -5,7 +5,7 @@ public static class Constants
     public const float horixontalSpeed = 10.0f;
     public const float dashingSpeed = 30.0f;
     public const float verticalSpeed = 40.0f;
-    public const float gravity = -100.0f;
+    public const float gravity = -50.0f;
 
 }
 
