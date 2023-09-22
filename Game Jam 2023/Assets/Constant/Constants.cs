@@ -7,8 +7,6 @@ public static class Constants
     public const float verticalSpeed = 40.0f;
     public const float gravity = -50.0f;
 
-    public const int maxBullets = 5;
-
 }
 
 public enum PlayerNumber
