@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    [SerializeField] private PlayerNumber playerNumber;
+    public PlayerControl playerControl;
     public GameObject bulletPrefab;
     public Transform shootPoint;
     public float shootInterval = 0.01f;
@@ -12,31 +14,29 @@ public class Shooting : MonoBehaviour
     public AudioSource shoot;
 
     [Header("ReloadBar")]
-    //public int maxBullets = 5;
     public int currentBullets;
     
     public Reload reloadBar;
 
     private void Start()
     {
-        currentBullets = Constants.maxBullets;
-        reloadBar.SetMaxShots(Constants.maxBullets);
+        currentBullets = Constants.MAX_BULLET;
+        reloadBar.SetMaxShots(Constants.MAX_BULLET);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && currentBullets > 0)
+        if(currentBullets==0) return; 
+        if ((Input.GetKeyDown(KeyCode.E)&& playerNumber == PlayerNumber.one) || (Input.GetKeyDown(KeyCode.RightAlt) && playerNumber == PlayerNumber.two))
         {
             Shoot();
             lastShootTime = Time.time;
-
-            Debug.Log(lastShootTime);
         }
     }
 
     private void FixedUpdate()
     {
-        if (Time.time - lastShootTime >= 5 && currentBullets < Constants.maxBullets)
+        if (Time.time - lastShootTime >= Constants.RELOAD_TIME && currentBullets < Constants.MAX_BULLET)
         {
             Reload();
         }
@@ -47,7 +47,7 @@ public class Shooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
 
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
-        rigidbody.velocity = new Vector2(10,0);
+        rigidbody.velocity = new Vector2(playerControl.getDirection()? 10 : -10,0);
 
         LoseBullets(1);
 

@@ -49,12 +49,12 @@ public class PlayerControl : MonoBehaviour
         }
         else if (playerRigidbody.gravityScale == 1)
         {
-            velocity.y += Constants.gravity * Time.deltaTime;
+            velocity.y += Constants.GRAVITY * Time.deltaTime;
             playerRigidbody.AddForce(new Vector2(0, velocity.y));
         }
         else if (playerRigidbody.gravityScale == -1)
         {
-            velocity.y += -Constants.gravity * Time.deltaTime;
+            velocity.y += -Constants.GRAVITY * Time.deltaTime;
             playerRigidbody.AddForce(new Vector2(0, velocity.y));
         }
     }
@@ -76,7 +76,7 @@ public class PlayerControl : MonoBehaviour
             gravityScale = isGrounded ? 1 : -1;
             spriteRenderer.flipY = !isGrounded;
             playerRigidbody.gravityScale = gravityScale;
-            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, Constants.verticalSpeed);
+            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, Constants.VERTICAL_SPEED);
             jump.Play();
         }
         if ((playerNumber == PlayerNumber.one && Input.GetKeyDown(KeyCode.S)) || (playerNumber == PlayerNumber.two && Input.GetKeyDown(KeyCode.DownArrow)))
@@ -84,26 +84,31 @@ public class PlayerControl : MonoBehaviour
             gravityScale = isRoof ? -1 : 1;
             spriteRenderer.flipY = isRoof;
             playerRigidbody.gravityScale = gravityScale;
-            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -Constants.verticalSpeed);
+            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -Constants.VERTICAL_SPEED);
             jump.Play();
         }
         if ((playerNumber == PlayerNumber.one && Input.GetKeyDown(KeyCode.Q)) || (playerNumber == PlayerNumber.two && Input.GetKeyDown(KeyCode.RightControl)))
         {
             playerRigidbody.gravityScale = isGrounded ? playerRigidbody.gravityScale : 0;
-            playerRigidbody.velocity = new Vector2(isForwardDirection ? Constants.dashingSpeed : -Constants.dashingSpeed, 0);
+            playerRigidbody.velocity = new Vector2(isForwardDirection ? Constants.DASHING_SPEED : -Constants.DASHING_SPEED, 0);
             dash.Play();
         }
     }
 
     float GetHorizontalSpeed()
     {
-        return Math.Abs(playerRigidbody.velocity.x) > Constants.horixontalSpeed ? Math.Abs(playerRigidbody.velocity.x) : Constants.horixontalSpeed;
+        return Math.Abs(playerRigidbody.velocity.x) > Constants.HORIZONTAL_SPEED ? Math.Abs(playerRigidbody.velocity.x) : Constants.HORIZONTAL_SPEED;
     }
 
     void ResetGravityScale() {
-        if (playerRigidbody.gravityScale == 0 && Math.Abs(playerRigidbody.velocity.x) < Constants.horixontalSpeed)
+        if (playerRigidbody.gravityScale == 0 && Math.Abs(playerRigidbody.velocity.x) < Constants.HORIZONTAL_SPEED)
         {
             playerRigidbody.gravityScale = gravityScale;
         }
+    }
+
+    public bool getDirection()
+    {
+        return isForwardDirection;
     }
 }
