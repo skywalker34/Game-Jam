@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SettingsMenu : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
-    public void BackOption()
+    public void Rematch()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void MainMenuOption()
     {
         SceneManager.LoadScene(0);
     }
