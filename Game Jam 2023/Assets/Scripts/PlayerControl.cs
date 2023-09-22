@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     public Transform roofCheck;
     public LayerMask groundLayer;
     public LayerMask roofLayer;
+    public SpriteRenderer spriteRenderer;
 
     Vector2 velocity;
     int gravityScale = 1;
@@ -73,6 +74,7 @@ public class PlayerControl : MonoBehaviour
         if ((playerNumber == PlayerNumber.one && Input.GetKeyDown(KeyCode.W)) || (playerNumber == PlayerNumber.two && Input.GetKeyDown(KeyCode.UpArrow)))
         {
             gravityScale = isGrounded ? 1 : -1;
+            spriteRenderer.flipY = !isGrounded;
             playerRigidbody.gravityScale = gravityScale;
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, Constants.verticalSpeed);
             jump.Play();
@@ -80,6 +82,7 @@ public class PlayerControl : MonoBehaviour
         if ((playerNumber == PlayerNumber.one && Input.GetKeyDown(KeyCode.S)) || (playerNumber == PlayerNumber.two && Input.GetKeyDown(KeyCode.DownArrow)))
         {
             gravityScale = isRoof ? -1 : 1;
+            spriteRenderer.flipY = isRoof;
             playerRigidbody.gravityScale = gravityScale;
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -Constants.verticalSpeed);
             jump.Play();
