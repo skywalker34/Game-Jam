@@ -8,14 +8,14 @@ using UnityEngine.SceneManagement;
 public class RoundTimer : MonoBehaviour
 {
     public float currentTime = 0f;
-    public float startingTime;
-
     public TextMeshProUGUI roundTimeText;
+    SettingsMenu settingsMenu;
 
-    private void Start()
+    public void Start()
     {
-        startingTime = 15f;
-        currentTime = startingTime;
+        settingsMenu = FindFirstObjectByType<SettingsMenu>();
+        Debug.Log(settingsMenu.startingTime);
+        currentTime = settingsMenu.startingTime;
     }
 
     private void Update()
