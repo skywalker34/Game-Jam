@@ -3,9 +3,10 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private PlayerNumber playerNumber;
+    [SerializeField] private ShootingDirection shootingDirection;
     public PlayerControl playerControl;
     public GameObject bulletPrefab;
-    public Transform shootPoint;
+    public Transform shootingPoint;
     public float shootInterval = 0.01f;
 
     private float lastShootTime;
@@ -26,8 +27,9 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-        if(currentBullets==0) return; 
-        if ((Input.GetKeyDown(KeyCode.E)&& playerNumber == PlayerNumber.one) || (Input.GetKeyDown(KeyCode.RightAlt) && playerNumber == PlayerNumber.two))
+        UpdateShootingPoint();
+        if (currentBullets==0) return; 
+        if ((Input.GetKeyDown(KeyCode.E)&& playerNumber == PlayerNumber.One) || (Input.GetKeyDown(KeyCode.RightAlt) && playerNumber == PlayerNumber.Two))
         {
             Shoot();
             lastShootTime = Time.time;
@@ -42,31 +44,42 @@ public class Shooting : MonoBehaviour
         }
     }
 
+    void UpdateShootingPoint()
+    {
+        
+    }
+
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+        if(shootingDirection==ShootingDirection.Forward && !playerControl.getDirection())
+        {
+            return;
+        }
+        if (shootingDirection == ShootingDirection.Backward && playerControl.getDirection())
+        {
+            return;
+        }
+        GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
 
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
         rigidbody.velocity = new Vector2(playerControl.getDirection()? 10 : -10,0);
 
-        LoseBullets(1);
+        LoseBullets();
 
         shoot.Play();
 
     }
 
-    void LoseBullets(int bullet)
+    void LoseBullets()
     {
-        currentBullets -= bullet;
+        currentBullets--;
     
         reloadBar.SetShots(currentBullets);
     }
 
     void Reload()
     {
-        currentBullets += 1;
-
-        Debug.Log("Current bullets:" + currentBullets);
+        currentBullets++;
         reloadBar.SetShots(currentBullets);
     }    
 }

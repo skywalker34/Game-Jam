@@ -7,11 +7,11 @@ public class GameOver : MonoBehaviour
 {
     public void Rematch()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene((int)Scene.FightingScene);
     }
 
     public void MainMenuOption()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene((int)Scene.MainMenu);
     }
 }
