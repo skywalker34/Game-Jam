@@ -8,11 +8,11 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player1") == true)
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene((int)Scene.GameOverP1);
         }
         else if (collision.gameObject.tag.Equals("Player2") == true)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene((int)Scene.GameOverP2);
         }
 
         Destroy(gameObject);
