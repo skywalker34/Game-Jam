@@ -14,16 +14,21 @@ public static class Constants
 
 public enum PlayerNumber
 {
-    one = 1, 
-    two = 2,
+    One = 1, 
+    Two = 2,
 }
 
-public enum  Movement
+public enum Scene
 {
-    up, 
-    down, 
-    left, 
-    right,
-    dash,
-    stop,
+    MainMenu,
+    Setting,
+    FightingScene,
+    GameOverP1,
+    GameOverP2,
+}
+
+public enum ShootingDirection
+{
+    Forward,
+    Backward
 }

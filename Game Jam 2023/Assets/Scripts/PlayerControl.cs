@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isForwardDirection = playerNumber == PlayerNumber.one;
+        isForwardDirection = playerNumber == PlayerNumber.One;
     }
 
     // Update is called once per frame
@@ -61,17 +61,18 @@ public class PlayerControl : MonoBehaviour
 
     void SetMovement()
     {
-        if ((playerNumber == PlayerNumber.one && Input.GetKey(KeyCode.D)) || (playerNumber == PlayerNumber.two && Input.GetKey(KeyCode.RightArrow)))
+        if ((playerNumber == PlayerNumber.One && Input.GetKey(KeyCode.D)) || (playerNumber == PlayerNumber.Two && Input.GetKey(KeyCode.RightArrow)))
         {
             isForwardDirection = true;
             playerRigidbody.velocity = new Vector2(GetHorizontalSpeed(), playerRigidbody.velocity.y);
         }
-        if ((playerNumber == PlayerNumber.one && Input.GetKey(KeyCode.A)) || (playerNumber == PlayerNumber.two && Input.GetKey(KeyCode.LeftArrow)))
+        if ((playerNumber == PlayerNumber.One && Input.GetKey(KeyCode.A)) || (playerNumber == PlayerNumber.Two && Input.GetKey(KeyCode.LeftArrow)))
         {
             isForwardDirection = false;
             playerRigidbody.velocity = new Vector2(-GetHorizontalSpeed(), playerRigidbody.velocity.y);
         }
-        if ((playerNumber == PlayerNumber.one && Input.GetKeyDown(KeyCode.W)) || (playerNumber == PlayerNumber.two && Input.GetKeyDown(KeyCode.UpArrow)))
+        spriteRenderer.flipX = isForwardDirection;
+        if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.W)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.UpArrow)))
         {
             gravityScale = isGrounded ? 1 : -1;
             spriteRenderer.flipY = !isGrounded;
@@ -79,7 +80,7 @@ public class PlayerControl : MonoBehaviour
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, Constants.VERTICAL_SPEED);
             jump.Play();
         }
-        if ((playerNumber == PlayerNumber.one && Input.GetKeyDown(KeyCode.S)) || (playerNumber == PlayerNumber.two && Input.GetKeyDown(KeyCode.DownArrow)))
+        if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.S)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.DownArrow)))
         {
             gravityScale = isRoof ? -1 : 1;
             spriteRenderer.flipY = isRoof;
@@ -87,7 +88,7 @@ public class PlayerControl : MonoBehaviour
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -Constants.VERTICAL_SPEED);
             jump.Play();
         }
-        if ((playerNumber == PlayerNumber.one && Input.GetKeyDown(KeyCode.Q)) || (playerNumber == PlayerNumber.two && Input.GetKeyDown(KeyCode.RightControl)))
+        if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.Q)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.RightControl)))
         {
             playerRigidbody.gravityScale = isGrounded ? playerRigidbody.gravityScale : 0;
             playerRigidbody.velocity = new Vector2(isForwardDirection ? Constants.DASHING_SPEED : -Constants.DASHING_SPEED, 0);
