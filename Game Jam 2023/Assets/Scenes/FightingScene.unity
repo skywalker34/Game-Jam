@@ -120,6 +120,58 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &22180555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 22180556}
+  - component: {fileID: 22180557}
+  m_Layer: 7
+  m_Name: ShootingPoint(backward)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &22180556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22180555}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: -0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 922644811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &22180557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22180555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd22a7719d921d64a86962a2c1f87703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 2
+  playerControl: {fileID: 552061502}
+  bulletPrefab: {fileID: 8155631894892712906, guid: 17c799b3929eaea488cfe5619981ca2e, type: 3}
+  shootPoint: {fileID: 0}
+  shootInterval: 0.5
+  shoot: {fileID: 657429882}
+  currentBullets: 0
+  reloadBar: {fileID: 1009425124}
 --- !u!1 &63103811
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 168363137}
   - component: {fileID: 168363138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +375,7 @@ Transform:
   m_GameObject: {fileID: 168363136}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.99, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -435,7 +487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 194079972}
   - component: {fileID: 194079973}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RoofCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288537495}
   - component: {fileID: 288537496}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +571,7 @@ Transform:
   m_GameObject: {fileID: 288537494}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.61, y: 0.23, z: 0}
+  m_LocalPosition: {x: 2, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -540,7 +592,7 @@ MonoBehaviour:
   playerNumber: 1
   playerControl: {fileID: 690307261}
   bulletPrefab: {fileID: 8155631894892712906, guid: 99f17b323c6754b4ebe061c70fdf87cf, type: 3}
-  shootPoint: {fileID: 288537495}
+  shootPoint: {fileID: 0}
   shootInterval: 0.5
   shoot: {fileID: 657429882}
   currentBullets: 0
@@ -647,7 +699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 537229683}
   - component: {fileID: 537229682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,7 +811,7 @@ Transform:
   m_GameObject: {fileID: 537229681}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.43, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -938,6 +990,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3840619085613357328, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840619085613357328, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
+      propertyPath: m_TagString
+      value: Player2
+      objectReference: {fileID: 0}
     - target: {fileID: 3840619085613357331, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -999,6 +1059,10 @@ PrefabInstance:
       value: Capsule2
       objectReference: {fileID: 0}
     - target: {fileID: 3840619086160710018, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840619086160710018, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_TagString
       value: Player2
       objectReference: {fileID: 0}
@@ -1032,11 +1096,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.02
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3840619086160710022, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_Size.x
@@ -1067,6 +1131,9 @@ PrefabInstance:
       addedObject: {fileID: 1120015478}
     - targetCorrespondingSourceObject: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 22180556}
+    - targetCorrespondingSourceObject: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 194079972}
     - targetCorrespondingSourceObject: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       insertIndex: -1
@@ -1086,7 +1153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 657429881}
   - component: {fileID: 657429882}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909864951}
   - component: {fileID: 909864952}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1260,7 +1327,7 @@ Transform:
   m_GameObject: {fileID: 909864950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.48, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1689,7 +1756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120015478}
   - component: {fileID: 1120015479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1705,7 +1772,7 @@ Transform:
   m_GameObject: {fileID: 1120015477}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7000008, y: 0.24000001, z: 0}
+  m_LocalPosition: {x: 2, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1726,7 +1793,7 @@ MonoBehaviour:
   playerNumber: 2
   playerControl: {fileID: 552061502}
   bulletPrefab: {fileID: 8155631894892712906, guid: 17c799b3929eaea488cfe5619981ca2e, type: 3}
-  shootPoint: {fileID: 1120015478}
+  shootPoint: {fileID: 0}
   shootInterval: 0.5
   shoot: {fileID: 657429882}
   currentBullets: 0
@@ -1900,7 +1967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1368922505}
   - component: {fileID: 1368922506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2027,7 +2094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1381116141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2052,6 +2119,58 @@ Transform:
   - {fileID: 1637632695}
   m_Father: {fileID: 1317359660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1384212864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1384212865}
+  - component: {fileID: 1384212866}
+  m_Layer: 7
+  m_Name: ShootingPoint(backward)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1384212865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384212864}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: -0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1317359660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1384212866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384212864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd22a7719d921d64a86962a2c1f87703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 1
+  playerControl: {fileID: 690307261}
+  bulletPrefab: {fileID: 8155631894892712906, guid: 99f17b323c6754b4ebe061c70fdf87cf, type: 3}
+  shootPoint: {fileID: 0}
+  shootInterval: 0.5
+  shoot: {fileID: 657429882}
+  currentBullets: 0
+  reloadBar: {fileID: 1009425124}
 --- !u!1 &1422094729
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,7 +2181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1422094730}
   - component: {fileID: 1422094731}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RoofCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2260,7 +2379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1529436010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player2 Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2276,7 +2395,7 @@ Transform:
   m_GameObject: {fileID: 1529436009}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2295,7 +2414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1637632695}
   - component: {fileID: 1637632694}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2423,7 +2542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1701626091}
   - component: {fileID: 1701626092}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2439,7 +2558,7 @@ Transform:
   m_GameObject: {fileID: 1701626090}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.022, y: -2.48, z: 0}
+  m_LocalPosition: {x: 0, y: -2.5, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2650,7 +2769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071884729}
   - component: {fileID: 2071884730}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2666,7 +2785,7 @@ Transform:
   m_GameObject: {fileID: 2071884728}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05, y: -2.476, z: 0}
+  m_LocalPosition: {x: 0, y: -2.5, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2719,6 +2838,14 @@ PrefabInstance:
     - target: {fileID: 3840619085613357328, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840619085613357328, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840619085613357328, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
+      propertyPath: m_TagString
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 3840619085613357331, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_RootOrder
@@ -2781,6 +2908,10 @@ PrefabInstance:
       value: Capsule1
       objectReference: {fileID: 0}
     - target: {fileID: 3840619086160710018, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840619086160710018, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_TagString
       value: Player1
       objectReference: {fileID: 0}
@@ -2794,7 +2925,7 @@ PrefabInstance:
       objectReference: {fileID: 9053502760199050793, guid: 54d1140c2272dbd4088c68837fd7758b, type: 3}
     - target: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.53
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2830,6 +2961,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 288537495}
+    - targetCorrespondingSourceObject: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1384212865}
     - targetCorrespondingSourceObject: {fileID: 3840619086160710021, guid: 1328a1b1700b3e2469f7c9d44795e3c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1422094730}
