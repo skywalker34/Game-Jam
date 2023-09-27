@@ -14,7 +14,7 @@ public class RoundTimer : MonoBehaviour
 
     private void Start()
     {
-        startingTime = 15f;
+        startingTime = 30f;
         currentTime = startingTime;
     }
 
@@ -22,6 +22,16 @@ public class RoundTimer : MonoBehaviour
     {
         currentTime -= 1 * Time.deltaTime;
         roundTimeText.text = currentTime.ToString("0");
+
+        if(currentTime <= 10 &&  currentTime > 5)
+        {
+            roundTimeText.color = Color.yellow;
+        }
+
+        else if(currentTime <= 5)
+        {
+            roundTimeText.color = Color.red;
+        }
 
         if(currentTime <= 0)
         {
