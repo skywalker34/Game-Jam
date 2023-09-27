@@ -7,12 +7,17 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene((int)Scene.FightingScene);
+    }
+
+    public void ControlsOption()
+    {
+        SceneManager.LoadScene((int)Scene.ControlsMenu);
     }
 
     public void SettingsOption()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene((int)Scene.SettingsMenu);
     }
 
     public void QuitGame()

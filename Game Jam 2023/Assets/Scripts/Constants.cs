@@ -21,11 +21,14 @@ public enum PlayerNumber
 
 public enum Scene
 {
+    StartScreen,
     MainMenu,
-    Setting,
+    SettingsMenu,
     FightingScene,
     GameOverP1,
     GameOverP2,
+    GameOverDraw,
+    ControlsMenu
 }
 
 public enum ShootingDirection

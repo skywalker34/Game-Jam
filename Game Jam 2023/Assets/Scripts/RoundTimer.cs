@@ -36,7 +36,7 @@ public class RoundTimer : MonoBehaviour
         if(currentTime <= 0)
         {
             currentTime = 0;
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene((int)Scene.GameOverDraw);
         }
     }
 }

@@ -10,7 +10,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void BackOption()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene((int)Scene.MainMenu);
     }
 
     public void SetVolume(float volume)
