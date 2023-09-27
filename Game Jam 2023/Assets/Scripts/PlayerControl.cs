@@ -4,9 +4,12 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private PlayerNumber playerNumber;
+    public GameObject shield;
+    public Shield _shield;
     public Rigidbody2D playerRigidbody;
     public Transform groundCheck;
     public Transform roofCheck;
+    public Transform shieldTransform;
     public LayerMask groundLayer;
     public LayerMask roofLayer;
     public SpriteRenderer spriteRenderer;
@@ -20,13 +23,12 @@ public class PlayerControl : MonoBehaviour
     [Header("Sounds")]
     public AudioSource jump, dash;
 
-    // Start is called before the first frame update
     void Start()
     {
         isForwardDirection = playerNumber == PlayerNumber.One;
+        shield.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
@@ -35,6 +37,7 @@ public class PlayerControl : MonoBehaviour
         SetVerticalVelocity();
         SetMovement();
         ResetGravityScale();
+        UpdateShieldPosition();
     }
 
     void SetVerticalVelocity()
@@ -74,6 +77,12 @@ public class PlayerControl : MonoBehaviour
         spriteRenderer.flipX = isForwardDirection;
         if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.W)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.UpArrow)))
         {
+            if (isRoof && CanActivateShield())
+            {
+                shield.SetActive(true);
+                return;
+            }
+            shield.SetActive(false);
             gravityScale = isGrounded ? 1 : -1;
             spriteRenderer.flipY = !isGrounded;
             playerRigidbody.gravityScale = gravityScale;
@@ -82,6 +91,12 @@ public class PlayerControl : MonoBehaviour
         }
         if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.S)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.DownArrow)))
         {
+            if (isGrounded && CanActivateShield())
+            {
+                shield.SetActive(true);
+                return;
+            }
+            shield.SetActive(false);
             gravityScale = isRoof ? -1 : 1;
             spriteRenderer.flipY = isRoof;
             playerRigidbody.gravityScale = gravityScale;
@@ -90,6 +105,7 @@ public class PlayerControl : MonoBehaviour
         }
         if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.Q)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.RightControl)))
         {
+            shield.SetActive(false);
             playerRigidbody.gravityScale = isGrounded ? playerRigidbody.gravityScale : 0;
             playerRigidbody.velocity = new Vector2(isForwardDirection ? Constants.DASHING_SPEED : -Constants.DASHING_SPEED, 0);
             dash.Play();
@@ -108,8 +124,31 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    public bool getDirection()
+    void UpdateShieldPosition()
+    {
+        if (shield != null)
+        {
+            float player_X = playerRigidbody.transform.position.x;
+            shield.transform.position = new Vector2(isForwardDirection ? player_X + Constants.SHIELD_POSITION : player_X - Constants.SHIELD_POSITION, playerRigidbody.transform.position.y);
+        }
+    }
+
+    public bool GetDirection()
     {
         return isForwardDirection;
+    }
+
+    private bool CanActivateShield()
+    {
+        if(playerNumber == PlayerNumber.One && _shield.playerOneShield > 0)
+        {
+            return true;
+        } else if(playerNumber == PlayerNumber.Two && _shield.playerTwoShield > 0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 }
