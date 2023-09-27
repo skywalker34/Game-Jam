@@ -9,60 +9,60 @@ public class Shooting : MonoBehaviour
     public Transform shootingPoint;
     public float shootInterval = 0.01f;
 
-    private float lastShootTime;
+    private float lastReloadTime = 0;
 
     [Header("Sounds")]
     public AudioSource shoot;
 
     [Header("ReloadBar")]
-    public int currentBullets;
-    
+    private int playerOneCurrentBullets;
+    private int playerTwoCurrentBullets;
+
     public Reload reloadBar;
 
     private void Start()
     {
-        currentBullets = Constants.MAX_BULLET;
+        playerOneCurrentBullets = Constants.MAX_BULLET;
+        playerTwoCurrentBullets = Constants.MAX_BULLET;
         reloadBar.SetMaxShots(Constants.MAX_BULLET);
     }
 
     void Update()
     {
-        UpdateShootingPoint();
-        if (currentBullets==0) return; 
+        if (playerOneCurrentBullets==0) return; 
         if ((Input.GetKeyDown(KeyCode.E)&& playerNumber == PlayerNumber.One) || (Input.GetKeyDown(KeyCode.RightAlt) && playerNumber == PlayerNumber.Two))
         {
+            playerControl.shield.SetActive(false);
             Shoot();
-            lastShootTime = Time.time;
         }
     }
 
     private void FixedUpdate()
     {
-        if (Time.time - lastShootTime >= Constants.RELOAD_TIME && currentBullets < Constants.MAX_BULLET)
+        int currentBullet = playerNumber == PlayerNumber.One? playerOneCurrentBullets : playerTwoCurrentBullets;
+        if (Time.time - lastReloadTime >= Constants.RELOAD_TIME && currentBullet < Constants.MAX_BULLET)
         {
             Reload();
+            lastReloadTime = Time.time;
         }
     }
 
-    void UpdateShootingPoint()
-    {
-        
-    }
+    
 
     void Shoot()
     {
-        if(shootingDirection==ShootingDirection.Forward && !playerControl.getDirection())
+        if(shootingDirection==ShootingDirection.Forward && !playerControl.GetDirection())
         {
             return;
         }
-        if (shootingDirection == ShootingDirection.Backward && playerControl.getDirection())
+        if (shootingDirection == ShootingDirection.Backward && playerControl.GetDirection())
         {
             return;
         }
         GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
 
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
-        rigidbody.velocity = new Vector2(playerControl.getDirection()? 10 : -10,0);
+        rigidbody.velocity = new Vector2(playerControl.GetDirection()? 10 : -10,0);
 
         LoseBullets();
 
@@ -72,14 +72,31 @@ public class Shooting : MonoBehaviour
 
     void LoseBullets()
     {
-        currentBullets--;
-    
-        reloadBar.SetShots(currentBullets);
+        if(playerNumber == PlayerNumber.One)
+        {
+            playerOneCurrentBullets--;
+            reloadBar.SetShots(playerOneCurrentBullets);
+        }
+        else
+        {
+            playerTwoCurrentBullets--;
+            reloadBar.SetShots(playerTwoCurrentBullets);
+        }
+        
     }
 
     void Reload()
     {
-        currentBullets++;
-        reloadBar.SetShots(currentBullets);
+        if (playerNumber == PlayerNumber.One)
+        {
+            playerOneCurrentBullets++;
+            reloadBar.SetShots(playerOneCurrentBullets);
+        }
+        else
+        {
+            playerTwoCurrentBullets++;
+            reloadBar.SetShots(playerTwoCurrentBullets);
+        }
+            
     }    
 }
