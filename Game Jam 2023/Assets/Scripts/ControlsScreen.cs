@@ -9,4 +9,12 @@ public class ControlsScreen : MonoBehaviour
     {
         SceneManager.LoadScene((int)Scene.MainMenu);
     }
+
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene((int)Scene.MainMenu);
+        }
+    }
 }
