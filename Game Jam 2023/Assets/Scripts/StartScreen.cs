@@ -9,4 +9,12 @@ public class StartScreen : MonoBehaviour
     {
         SceneManager.LoadScene((int)Scene.MainMenu);
     }
+
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            SceneManager.LoadScene((int)Scene.MainMenu);
+        }
+    }
 }
