@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
     bool isForwardDirection;
 
     [Header("Sounds")]
-    public AudioSource jump, dash;
+    public AudioSource jump, dash, shieldActivate;
 
     void Start()
     {
@@ -80,6 +80,7 @@ public class PlayerControl : MonoBehaviour
             if (isRoof && CanActivateShield())
             {
                 shield.SetActive(true);
+                shieldActivate.Play();
                 return;
             }
             shield.SetActive(false);
@@ -87,13 +88,17 @@ public class PlayerControl : MonoBehaviour
             spriteRenderer.flipY = !isGrounded;
             playerRigidbody.gravityScale = gravityScale;
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, Constants.VERTICAL_SPEED);
-            jump.Play();
+            if (!isRoof)
+            {
+                jump.Play();
+            }
         }
         if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.S)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.DownArrow)))
         {
             if (isGrounded && CanActivateShield())
             {
                 shield.SetActive(true);
+                shieldActivate.Play();
                 return;
             }
             shield.SetActive(false);
@@ -101,7 +106,11 @@ public class PlayerControl : MonoBehaviour
             spriteRenderer.flipY = isRoof;
             playerRigidbody.gravityScale = gravityScale;
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -Constants.VERTICAL_SPEED);
-            jump.Play();
+            if (!isGrounded)
+            {
+                jump.Play();
+            }
+
         }
         if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.Q)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.RightControl)))
         {

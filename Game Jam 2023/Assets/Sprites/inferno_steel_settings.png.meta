@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      inferno_steel_settings_0: -8816960582564352804
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
