@@ -64,18 +64,18 @@ public class PlayerControl : MonoBehaviour
 
     void SetMovement()
     {
-        if ((playerNumber == PlayerNumber.One && Input.GetKey(KeyCode.D)) || (playerNumber == PlayerNumber.Two && Input.GetKey(KeyCode.RightArrow)))
+        if ((playerNumber == PlayerNumber.One && Input.GetKey(KeyCode.D)) || (playerNumber == PlayerNumber.Two && Input.GetKey(KeyCode.L)))
         {
             isForwardDirection = true;
             playerRigidbody.velocity = new Vector2(GetHorizontalSpeed(), playerRigidbody.velocity.y);
         }
-        if ((playerNumber == PlayerNumber.One && Input.GetKey(KeyCode.A)) || (playerNumber == PlayerNumber.Two && Input.GetKey(KeyCode.LeftArrow)))
+        if ((playerNumber == PlayerNumber.One && Input.GetKey(KeyCode.A)) || (playerNumber == PlayerNumber.Two && Input.GetKey(KeyCode.J)))
         {
             isForwardDirection = false;
             playerRigidbody.velocity = new Vector2(-GetHorizontalSpeed(), playerRigidbody.velocity.y);
         }
         spriteRenderer.flipX = isForwardDirection;
-        if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.W)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.UpArrow)))
+        if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.W)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.I)))
         {
             if (isRoof && CanActivateShield())
             {
@@ -93,7 +93,7 @@ public class PlayerControl : MonoBehaviour
                 jump.Play();
             }
         }
-        if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.S)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.DownArrow)))
+        if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.S)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.K)))
         {
             if (isGrounded && CanActivateShield())
             {
@@ -112,7 +112,7 @@ public class PlayerControl : MonoBehaviour
             }
 
         }
-        if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.Q)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.RightControl)))
+        if ((playerNumber == PlayerNumber.One && Input.GetKeyDown(KeyCode.Q)) || (playerNumber == PlayerNumber.Two && Input.GetKeyDown(KeyCode.U)))
         {
             shield.SetActive(false);
             playerRigidbody.gravityScale = isGrounded ? playerRigidbody.gravityScale : 0;

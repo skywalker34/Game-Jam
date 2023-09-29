@@ -14,7 +14,7 @@ public class RoundTimer : MonoBehaviour
     private void Start()
     {
         isEnd = false;
-        startingTime = 3f;
+        startingTime = 30f;
         currentTime = startingTime;
     }
 

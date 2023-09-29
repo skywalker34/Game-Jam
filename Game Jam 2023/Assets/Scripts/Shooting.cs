@@ -30,7 +30,7 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if (playerOneCurrentBullets==0) return; 
-        if ((Input.GetKeyDown(KeyCode.E)&& playerNumber == PlayerNumber.One) || (Input.GetKeyDown(KeyCode.RightAlt) && playerNumber == PlayerNumber.Two))
+        if ((Input.GetKeyDown(KeyCode.E)&& playerNumber == PlayerNumber.One) || (Input.GetKeyDown(KeyCode.O) && playerNumber == PlayerNumber.Two))
         {
             playerControl.shield.SetActive(false);
             Shoot();
