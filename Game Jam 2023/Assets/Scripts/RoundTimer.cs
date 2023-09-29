@@ -1,20 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class RoundTimer : MonoBehaviour
 {
+    public GameManager gameManager;
     public float currentTime = 0f;
     public float startingTime;
 
     public TextMeshProUGUI roundTimeText;
 
+    private bool isEnd;
+
     private void Start()
     {
-        startingTime = 30f;
+        isEnd = false;
+        startingTime = 3f;
         currentTime = startingTime;
     }
 
@@ -33,10 +33,14 @@ public class RoundTimer : MonoBehaviour
             roundTimeText.color = Color.red;
         }
 
-        if(currentTime <= 0)
+        if(currentTime <= 0 )
         {
             currentTime = 0;
-            SceneManager.LoadScene((int)Scene.GameOverDraw);
+            if(!isEnd)
+            {
+                gameManager.DispalyDraw();
+            }
+            isEnd = true;
         }
     }
 }
